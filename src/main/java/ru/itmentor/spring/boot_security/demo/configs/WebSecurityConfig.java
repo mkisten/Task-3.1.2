@@ -54,7 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable() //  защита от CSRF-атак( типо подставного сайта где злоумышленник его использует и заставляет
                 // от имени пользователя отправлять пароли, деньги со счёта на счёт и т.п
                 .authorizeRequests() //авторизацуем запрос
-                .antMatchers("/auth/login", "/", "/eror").permitAll()
+                .antMatchers("/auth/login", "/", "/eror", "/users/new").permitAll()
                 .antMatchers("/users/**").hasAnyRole("USER", "ADMIN") //прописываем доступ для юрл /user/**
                 .antMatchers("/admin/**").hasRole("ADMIN") //прописываем доступ для юрл /admin/**
                 .anyRequest().authenticated() // все запросы должны быть авторизованы и аутентифицированы
