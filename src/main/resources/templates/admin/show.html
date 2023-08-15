@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+
+<body>
+<table  class="table_blur">
+    <tr>
+        <th colspan="6" text-align="center">VIEW USER</th>
+    </tr>
+    <tr>
+        <th>ID</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Возраст</th>
+        <th>     </th>
+    </tr>
+    <tr>
+        <td><p th:text="${user.getId()}">VALUE</p></td>
+        <td><p th:text="${user.getName()}">VALUE</p></td>
+        <td><p th:text="${user.getSurname()}">VALUE</p></td>
+        <td><p th:text="${user.getAge()}">VALUE</p></td>
+        <td><a th:href="@{/users/{id}/edit(id=${user.getId()})}">Изменить</a></td>
+    </tr>
+    <tr>
+        <td><form th:method="delete" th:action="@{/users/{id}(id=${user.getId()})}">
+            <input type="submit" value="УДАЛИТЬ"/>
+        </form></td>
+    </tr>
+    <td>
+        <form action="/logout">
+            <button type="submit">Выйти</button>
+        </form>
+    </td>
+</table>
+</body>
+</html>

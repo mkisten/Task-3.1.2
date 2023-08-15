@@ -22,7 +22,7 @@
     <tr th:each="user : ${users}">
         <td><a th:href="@{/users/{id}(id=${user.getId()})}" th:text="${user.getId()}">user</a></td>
         <td><a th:href="@{/users/{id}(id=${user.getId()})}" th:text="${user.getName()}">user</a></td>
-        <td><a th:href="@{/users/{id}(id=${user.getId()})}" th:text="${user.getLastName()}">user</a></td>
+        <td><a th:href="@{/users/{id}(id=${user.getId()})}" th:text="${user.getSurname()}">user</a></td>
         <td><a th:href="@{/users/{id}(id=${user.getId()})}" th:text="${user.getAge()}">user</a></td>
         <td><a th:href="@{/users/{id}/edit(id=${user.getId()})}">
             <input type="submit" value="Изменить"/></a></td>
@@ -38,7 +38,7 @@
     </tr>
     <td>
         <form action="/users/new">
-            <button type="submit">Регистрация нового пользователя</button>
+            <button type="submit">Добавить нового пользователя</button>
         </form>
     </td>
 
