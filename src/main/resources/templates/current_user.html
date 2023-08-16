@@ -7,13 +7,13 @@
 </head>
 <body>
 
-<table border="2">
+<table>
     <thead>
     <tr>
         <th>ID</th>
         <th>Имя</th>
         <th>Фамилия</th>
-        <th>username</th>
+        <th>Имя пользователя</th>
     </tr>
 
     </thead>
@@ -22,7 +22,7 @@
         <td th:utext="${user.getId()}">id</td>
         <td th:utext="${user.getName()}">Имя</td>
         <td th:utext="${user.getLastName()}">Фамилия</td>
-        <td th:utext="${user.getUsername()}">username</td>
+        <td th:utext="${user.getUsername()}">Имя пользователя</td>
     </tr>
     </tbody>
 </table>

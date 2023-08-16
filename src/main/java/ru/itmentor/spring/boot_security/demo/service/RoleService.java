@@ -6,6 +6,9 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.itmentor.spring.boot_security.demo.model.Role;
 import ru.itmentor.spring.boot_security.demo.repositories.RoleRepositories;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 @Service
 @Transactional(readOnly = true)
@@ -18,8 +21,35 @@ public class RoleService {
     }
 
     @Transactional(readOnly = true)
-    public Set<Role> getAllRoles() {
-
-        return (Set)roleRepositories.findAll();
+      public Set<Role> getAllRoles() {
+        List<Role> roleList = roleRepositories.findAll();
+        return new HashSet<>(roleList);
     }
+    @Transactional(readOnly = true)
+    public Role getRoleByName(String name) {
+        return roleRepositories.getRoleByRole(name);
+    }
+    @Transactional(readOnly = true)
+    public Set<Role> getSetOfRoles(String[] roleNames) {
+        return roleRepositories.getSetOfRolesByRoleIn(Arrays.asList(roleNames));
+    }
+
+
+    @Transactional(readOnly = true)
+    public void add(Role role) {
+        roleRepositories.save(role);
+    }
+
+
+    @Transactional(readOnly = true)
+    public void edit(Role role) {
+        roleRepositories.save(role);
+    }
+
+
+    @Transactional(readOnly = true)
+    public Role getById(Long id) {
+        return roleRepositories.getById(id);
+    }
+
 }

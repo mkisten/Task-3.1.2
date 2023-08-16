@@ -32,7 +32,7 @@ public class UserService implements UserDetailsService {
     @Transactional
     public void saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setRole(new Role("ROLE_USER"));
+//        user.setRole(new Role("ROLE_ADMIN"));
         userRepositories.save(user);
     }
 
