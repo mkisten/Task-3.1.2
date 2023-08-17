@@ -28,21 +28,16 @@
             </p>
             <label for="password">Password</label>
             <input type="password" th:field="*{password}" id="password"/>
-            <input type="text" th:field="*{role}" id="role"/>
-<!--            <input type="text" id="role-input" name="roles" placeholder="Role">-->
-<!--            </p>-->
+            </p>
+            <label>
 
-<!--            -->
-
-<!--&lt;!&ndash;            <label>&ndash;&gt;-->
-
-<!--&lt;!&ndash;                <select size="3" multiple="multiple" name="roles" id="roles">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <option disabled>Roles:</option>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <option value="ROLE_ADMIN">ADMIN</option>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <option selected value="ROLE_USER">USER</option>&ndash;&gt;-->
-<!--&lt;!&ndash;                </select>&ndash;&gt;-->
-<!--&lt;!&ndash;            </label>&ndash;&gt;-->
-<!--            </p>-->
+                <select size="3" multiple="multiple" name="roles" id="roles">
+                    <option disabled>Roles:</option>
+                    <option value=1>ADMIN</option>
+                    <option selected value=2>USER</option>
+                </select>
+            </label>
+            </p>
         </fieldset>
         <br/>
         <button style="background: lightgray" type="submit">Сохранить пользователя</button>

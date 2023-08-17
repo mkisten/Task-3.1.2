@@ -63,11 +63,6 @@ public class UserService implements UserDetailsService {
             user.setRoles(rol);
             userRepositories.save(user);
         }
-    //  public void updateUser(Long id, User updateUser){
-//    updateUser.setId(id);
-//
-//    userRepositories.save(updateUser);
-//    }
 
     public Role showRole(Long id) {
         return roleRepositories.getById(id);

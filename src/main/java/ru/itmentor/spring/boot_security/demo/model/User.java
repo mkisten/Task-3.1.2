@@ -38,36 +38,25 @@ public class User implements UserDetails{
     private String password;
     private String role;
 
-//    @ManyToOne (cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-//    @JoinColumn (name = "role_id", foreignKey = @ForeignKey(name = "role_id_fk"))
-//    private Role role;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",
         joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-//    public void setRole(Role role) {
-//        this.role = role;
-//    }
-//    @Transient
-//    private Set<Role> roles = new HashSet<>();
-
     public User() {
     }
 
-    public User(String name, String lastName, int age, String username, String password, String role) {
+    public User(String name, String lastName, int age, String username, String password) {
         this.name = name;
         this.lastName = lastName;
         this.age = age;
         this.username = username;
         this.password = password;
-        this.role = role;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        //roles.add(this.getRole());
         return getRoles();
     }
     @Override
