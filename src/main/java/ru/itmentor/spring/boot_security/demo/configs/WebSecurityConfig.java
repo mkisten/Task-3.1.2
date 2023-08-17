@@ -51,10 +51,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception { // конфиги в которых указывается доступы пользователей
         http
                 .cors().disable()
-                .csrf().disable() //  защита от CSRF-атак( типо подставного сайта где злоумышленник его использует и заставляет
-                // от имени пользователя отправлять пароли, деньги со счёта на счёт и т.п
+                .csrf().disable() //  защита от CSRF-атак
                 .authorizeRequests() //авторизацуем запрос
-                .antMatchers("/login", "/").permitAll()
+                .antMatchers("/login").permitAll()
                 .antMatchers("/user/**").hasAnyRole("USER", "ADMIN") //прописываем доступ для юрл /user/**
                 .antMatchers("/admin/**").hasRole("ADMIN") //прописываем доступ для юрл /admin/**
                 .anyRequest().authenticated() // все запросы должны быть авторизованы и аутентифицированы
@@ -64,12 +63,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll() // доступно всем
                 .and()
                 .logout().permitAll(); // настройка логаута
+
+
 //                .cors().disable()
 //                .csrf().disable() //  защита от CSRF-атак( типо подставного сайта где злоумышленник его использует и заставляет
 //                // от имени пользователя отправлять пароли, деньги со счёта на счёт и т.п
 //                .authorizeRequests() //авторизацуем запрос
-//                .antMatchers("/auth/login", "/", "/eror", "/users/new").permitAll()
-//                .antMatchers("/users/**").hasAnyRole("USER", "ADMIN") //прописываем доступ для юрл /user/**
+//                .antMatchers("/auth/login", "/", "/eror").permitAll()
+//                .antMatchers("/user/**").hasAnyRole("USER", "ADMIN") //прописываем доступ для юрл /user/**
 //                .antMatchers("/admin/**").hasRole("ADMIN") //прописываем доступ для юрл /admin/**
 //                .anyRequest().authenticated() // все запросы должны быть авторизованы и аутентифицированы
 //                .and()

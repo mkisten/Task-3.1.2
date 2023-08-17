@@ -21,17 +21,17 @@ public class RoleService {
     }
 
     @Transactional(readOnly = true)
-      public Set<Role> getAllRoles() {
-        List<Role> roleList = roleRepositories.findAll();
-        return new HashSet<>(roleList);
+      public List<Role> getAllRoles() {
+       return roleRepositories.findAll();
     }
     @Transactional(readOnly = true)
     public Role getRoleByName(String name) {
         return roleRepositories.getRoleByRole(name);
     }
+
     @Transactional(readOnly = true)
     public Set<Role> getSetOfRoles(String[] roleNames) {
-        return roleRepositories.getSetOfRolesByRoleIn(Arrays.asList(roleNames));
+        return roleRepositories.getSetOfRolesByRoleIn(List.of(roleNames));
     }
 
 

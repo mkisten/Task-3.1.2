@@ -8,11 +8,12 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
 
-public interface RoleRepositories extends JpaRepository<Role, Integer> {
+public interface RoleRepositories extends JpaRepository<Role, Long> {
     Optional<Role> findUserByRole(String role);
     Set<Role> getSetOfRolesByRoleIn(Collection<String> roleNames);
    // Set<Role> getSetOfRolesByIn(Collection<String> roleNames);
     Role getRoleByRole(String name);
     Role getById(Long ID);
+
 
 }

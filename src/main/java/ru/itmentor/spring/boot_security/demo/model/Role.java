@@ -16,15 +16,15 @@ import java.util.Objects;
 public class Role implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(insertable = false)
     private Long id;
-    @Column (name = "role")
+
+    @Column(name = "name", unique = true, length = 100)
     private String role;
     public Role() {
     }
-    public Role(String role) {
-        this.role = role;
-    }
+//    public Role(String role) {
+//        this.role = role;
+//    }
     public Role(Long id) {this.id = id;}
     @Override
     public String getAuthority() {
