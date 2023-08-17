@@ -58,33 +58,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasRole("ADMIN") //прописываем доступ для юрл /admin/**
                 .anyRequest().authenticated() // все запросы должны быть авторизованы и аутентифицированы
                 .and()
-                .formLogin() // задаю форму для ввода логина-пароля, по дефолту это "/login"
+                .formLogin().loginPage("/auth/login") // задаю форму для ввода логина-пароля, по дефолту это "/login"
+                .loginProcessingUrl("/process_login")
+                .defaultSuccessUrl("/users",true)
+                .failureUrl("/auth/login?eror")
                 .successHandler(successUserHandler)
                 .permitAll() // доступно всем
+//                .formLogin() // задаю форму для ввода логина-пароля, по дефолту это "/login"
+//                .successHandler(successUserHandler)
+//                .permitAll() // доступно всем
                 .and()
                 .logout().permitAll(); // настройка логаута
 
-
-//                .cors().disable()
-//                .csrf().disable() //  защита от CSRF-атак( типо подставного сайта где злоумышленник его использует и заставляет
-//                // от имени пользователя отправлять пароли, деньги со счёта на счёт и т.п
-//                .authorizeRequests() //авторизацуем запрос
-//                .antMatchers("/auth/login", "/", "/eror").permitAll()
-//                .antMatchers("/user/**").hasAnyRole("USER", "ADMIN") //прописываем доступ для юрл /user/**
-//                .antMatchers("/admin/**").hasRole("ADMIN") //прописываем доступ для юрл /admin/**
-//                .anyRequest().authenticated() // все запросы должны быть авторизованы и аутентифицированы
-//                .and()
-//                .formLogin().loginPage("/auth/login") // задаю форму для ввода логина-пароля, по дефолту это "/login"
-//                .loginProcessingUrl("/process_login")
-//                .defaultSuccessUrl("/users",true)
-//                .failureUrl("/auth/login?eror")
-//                .successHandler(successUserHandler)
-//                .permitAll() // доступно всем
-//
-//                .and()
-//                .logout().logoutUrl("/logout")
-//                .logoutSuccessUrl("/auth/login")
-//                .permitAll(); // настройка логаута
     }
 
 }

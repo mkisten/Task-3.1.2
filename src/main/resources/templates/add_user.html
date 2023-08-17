@@ -11,7 +11,7 @@
         <input type="submit" value="Выйти">
     </form>
     <br>
-    <form method="POST" th:action="@{/admin/users/adduser}" th:object="${user}">
+    <form method="POST" th:action="@{/admin/users/add}" th:object="${user}">
         <fieldset>
             <legend>Данные пользователя</legend>
             <label for="name">Enter name</label>
