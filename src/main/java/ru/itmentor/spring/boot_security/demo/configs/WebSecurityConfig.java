@@ -53,7 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().disable()
                 .csrf().disable() //  защита от CSRF-атак
                 .authorizeRequests() //авторизацуем запрос
-                .antMatchers("/login").permitAll()
+                .antMatchers("/login", "/api/**").permitAll()
                 .antMatchers("/user/**").hasAnyRole("USER", "ADMIN") //прописываем доступ для юрл /user/**
                 .antMatchers("/admin/**").hasRole("ADMIN") //прописываем доступ для юрл /admin/**
                 .anyRequest().authenticated() // все запросы должны быть авторизованы и аутентифицированы

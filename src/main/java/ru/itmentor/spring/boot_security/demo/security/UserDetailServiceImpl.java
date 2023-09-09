@@ -9,6 +9,7 @@ import ru.itmentor.spring.boot_security.demo.model.User;
 import ru.itmentor.spring.boot_security.demo.repositories.UserRepositories;
 
 import java.util.Optional;
+
 @Service("userDetailServiceImpl")
 public class UserDetailServiceImpl implements UserDetailsService {
     private final UserRepositories userRepositories;
@@ -22,7 +23,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
     @Override
     public User loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> user = userRepositories.findUserByUsername(username);
-        if(user.isEmpty())
+        if (user.isEmpty())
             throw new UsernameNotFoundException("User not found");
 
         return user.get();
